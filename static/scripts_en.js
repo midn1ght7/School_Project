@@ -13,10 +13,10 @@ function createTable(orders_val, matrix, type)
     
     let row_1 = document.createElement('tr');
     let row_1_cell_1 = document.createElement('td');
-    row_1_cell_1.innerHTML = "Decyzje";
+    row_1_cell_1.innerHTML = "Decisions";
     row_1_cell_1.className = "headers";
     let row_1_cell_2 = document.createElement('td');
-    row_1_cell_2.innerHTML = "Stany natury (popyt na kubki)";
+    row_1_cell_2.innerHTML = "States of nature";
     row_1_cell_2.className = "headers";
 
     row_1.appendChild(row_1_cell_1);
@@ -29,12 +29,12 @@ function createTable(orders_val, matrix, type)
     if(type == "Payment")
     {
         
-        tableTitle.innerHTML='Tablica wypłat';
+        tableTitle.innerHTML='The Payment Table';
         var elementid = "payment-table";
     }
     else if(type == "Regret")
     {
-        tableTitle.innerHTML='Tablica strat możliwości';
+        tableTitle.innerHTML='The Regret Table';
         var elementid = "regret-table";   
     }
     else
@@ -49,7 +49,7 @@ function createTable(orders_val, matrix, type)
 
     let row_2 = document.createElement('tr');
     let row_2_cell_1 = document.createElement('td');
-    row_2_cell_1.innerHTML = "Zamówienie:";
+    row_2_cell_1.innerHTML = "Order for:";
     row_2_cell_1.className = "headers";
     row_2.appendChild(row_2_cell_1);
     for (var i=0;i<orders_val;i++){
@@ -64,7 +64,7 @@ function createTable(orders_val, matrix, type)
     {
         let row = document.createElement('tr');
         let row_cell_1 = document.createElement('td');
-        row_cell_1.innerHTML = "a"+(i+1)+":"+(i+1)*100+" kubków";
+        row_cell_1.innerHTML = "a"+(i+1)+":"+(i+1)*100;
         row_cell_1.className = "headers";
         row.appendChild(row_cell_1);
         for (var j=0;j<orders_val;j++)
@@ -101,42 +101,42 @@ function appendCriterion(title, value, index){
     h3.innerHTML = title;
     document.getElementById('criterions').appendChild(h3);
     let p = document.createElement("p");
-    if(title == "Kryterium Laplace'a")
+    if(title == "Laplace Criterion")
     {
-        p.innerHTML = "Według tego kryterium, najlepszą strategią byłaby strategia: a"+(index[0]+1);
+        p.innerHTML = "According to this criterion, the best strategy would be: a"+(index[0]+1);
     }
-    else if(title == "Kryterium oczekiwanej wypłaty (OW)")
+    else if(title == "Expected Payoff Criterion")
     {
-        p.innerHTML = "Według tego kryterium, najlepszą strategią byłaby strategia: a"+(index[0]+1)+" z oczekiwaną wypłatą: "+(value);
+        p.innerHTML = "According to this criterion, the best strategy would be: a"+(index[0]+1)+" with expected payment: "+(value);
     }
-    else if(title == "Kryterium oczekiwanej straty możliwości (OSM)")
+    else if(title == "Expected Loss Criterion")
     {
-        p.innerHTML = "Według tego kryterium, najlepszą strategią byłaby strategia: a"+(index[0]+1)+" z oczekiwaną stratą możliwości: "+(value);
+        p.innerHTML = "According to this criterion, the best strategy would be: a"+(index[0]+1)+" with expected loss: "+(value);
     }
-    else if(title == "Oczekiwana wypłata przy wykorzystaniu doskonałej informacji")
+    else if(title == "Expected Value given Perfect Information")
     {
-        p.innerHTML = "Według tego kryterium, oczekiwana wypłata przy wykorzystaniu doskonałej informacji wynosi: "+value;
+        p.innerHTML = "According to this criterion the expected value given perfect information equals: "+value;
     }
-    else if(title == "Oczekiwana wartość doskonałej informacji")
+    else if(title == "Expected Value of Perfect Information")
     {
-        p.innerHTML = "Według tego kryterium, oczekiwana wartość doskonałej informacji wynosi: "+value;
+        p.innerHTML = "According to this criterion the expected value of perfect information equals: "+value;
     }
     else
     {
-        p.innerHTML = "Według tego kryterium, najlepszą strategią byłaby strategia: a"+(index[0]+1)+" s"+(index[1]+1)+" wynosząca: "+value;
+        p.innerHTML = "According to this criterion, the best strategy would be: a"+(index[0]+1)+" and s"+(index[1]+1)+" equalling: "+value;
     }
     document.getElementById('criterions').appendChild(p);
 }
 
 function hurwiczCriterion(matrix){
-    var title = "Kryterium Hurwicza (maksymaksowe)";
+    var title = "Hurwicz Criterion";
     var max = getMaxfromMatrix(matrix);
     var index = findIndexofMatrix(matrix, max);
     appendCriterion(title, max, index);
 }
 
 function waldCriterion(matrix){
-    var title = "Kryterium Walda (maksyminowe)";
+    var title = "Wald Criterion";
     var minTable = getRowMinTable(matrix);
     var max = getMaxfromTable(minTable);
     var index = findIndexofMatrix(matrix, max);
@@ -144,7 +144,7 @@ function waldCriterion(matrix){
 }
 
 function savageCriterion(matrix){
-    var title = "Kryterium Savage'a (minimaksowe)";
+    var title = "Savage Criterion";
     var maxTable = getRowMaxTable(matrix);
     var min = getMinfromTable(maxTable);
     var index = findIndexofMatrix(matrix, min);
@@ -152,7 +152,7 @@ function savageCriterion(matrix){
 }
 
 function laplaceCriterion(payment){
-    var title = "Kryterium Laplace'a";
+    var title = "Laplace Criterion";
     var sum_table = [];
     for (var i=0;i<payment.length;i++)
     {
@@ -188,7 +188,7 @@ function expectedProbabilites(matrix){
 }
 
 function expectedPayoff(matrix){
-    var title = "Kryterium oczekiwanej wypłaty (OW)";
+    var title = "Expected Payoff Criterion";
     var prob = expectedProbabilites(matrix);
     var sum_table = [];
     for (var i=0;i<matrix.length;i++)
@@ -210,7 +210,7 @@ function expectedPayoff(matrix){
 }
 
 function expectedLoss(matrix){
-    var title = "Kryterium oczekiwanej straty możliwości (OSM)";
+    var title = "Expected Loss Criterion";
     var prob = expectedProbabilites(matrix);
     var sum_table = [];
     for (var i=0;i<matrix.length;i++)
@@ -231,7 +231,7 @@ function expectedLoss(matrix){
 }
 
 function expectedPerfectPayoff(matrix){
-    var title = "Oczekiwana wypłata przy wykorzystaniu doskonałej informacji";
+    var title = "Expected Value given Perfect Information";
     var prob = expectedProbabilites(matrix);
     var max_table = getRowMaxTable(matrix);
     var result = 0
@@ -244,7 +244,7 @@ function expectedPerfectPayoff(matrix){
 }
 
 function expectedValueofPerfect(EP,EPP){
-    var title = "Oczekiwana wartość doskonałej informacji";
+    var title = "Expected Value of Perfect Information";
     var result = EPP - EP;
     appendCriterion(title, result, 0);
 }
@@ -359,7 +359,7 @@ window.onload=function(){
             {
                 var label = document.createElement("label");
                 label.htmlFor = "price" + i;
-                label.textContent = "Cena za sztukę przy zamówieniu na (" + (i+1)*100 +") sztuk";
+                label.textContent = "Price for order (" + (i+1)*100 +")";
                 var input = document.createElement("input");
                 input.type = "text";
                 input.name = "price" + i;
@@ -370,12 +370,12 @@ window.onload=function(){
             }
             var submit = document.createElement("input");
             submit.type = "submit";
-            submit.value = "Potwierdź";
+            submit.value = "Submit";
             document.getElementById("prices-to-no-form").appendChild(submit);
         }
         else
         {
-            alert("Coś poszło nie tak.");
+            alert("Something went wrong.");
         }
     })
 
@@ -393,7 +393,7 @@ window.onload=function(){
             for (var i=0;i<sell_days;i++){
                 var label = document.createElement("label");
                 label.htmlFor = "price_day" + i;
-                label.textContent = "Cena na dzień: " + (i+1);
+                label.textContent = "Price for day no. " + (i+1);
                 var input = document.createElement("input");
                 input.type = "text";
                 input.name = "price_day" + i;
@@ -403,12 +403,12 @@ window.onload=function(){
             }
             var submit = document.createElement("input");
             submit.type = "submit";
-            submit.value = "Potwierdź";
+            submit.value = "Submit";
             document.getElementById("prices-to-days-form").appendChild(submit);
         }
         else
         {
-            alert("Coś poszło nie tak.");
+            alert("Something went wrong.");
         }
     })
 
@@ -455,7 +455,7 @@ window.onload=function(){
         }
         else
         {
-            alert("Coś poszło nie tak.");
+            alert("Something went wrong.");
         }
     })
 
