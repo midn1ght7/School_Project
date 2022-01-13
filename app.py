@@ -46,13 +46,16 @@ def fun1():
 
     # Compute the matrix
     for i in range(orders_val):          # A for loop for row entries
-        a =[]
+        a = []
         for j in range(orders_val):      # A for loop for column entries
             if(orders_matrix[j]>orders_matrix[i]):
-                a.append(" - ")
+                #print("--Entered IF")
+                a.append(a[j-1])
             else:
+                #print("--Entered ELSE")
                 a.append((-orders_matrix[i]*prices_orders[i])+(orders_matrix[j]*prices_days[0]+(orders_matrix[i]-orders_matrix[j])*prices_days[1]))
         compute_matrix.append(a)
+        #print(compute_matrix[i])
 
     # For printing the matrix
     for i in range(orders_val):
