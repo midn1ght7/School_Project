@@ -16,7 +16,7 @@ function createTable(orders_val, matrix, type)
     row_1_cell_1.innerHTML = "Decyzje";
     row_1_cell_1.className = "headers";
     let row_1_cell_2 = document.createElement('td');
-    row_1_cell_2.innerHTML = "Stany natury (popyt na kubki)";
+    row_1_cell_2.innerHTML = "Stany natury (popyt na sernik)";
     row_1_cell_2.className = "headers";
 
     row_1.appendChild(row_1_cell_1);
@@ -64,7 +64,7 @@ function createTable(orders_val, matrix, type)
     {
         let row = document.createElement('tr');
         let row_cell_1 = document.createElement('td');
-        row_cell_1.innerHTML = "a"+(i+1)+":"+(i+1)*100+" kubków";
+        row_cell_1.innerHTML = "a"+(i+1)+":"+(i+1)*100+" serników";
         row_cell_1.className = "headers";
         row.appendChild(row_cell_1);
         for (var j=0;j<orders_val;j++)
