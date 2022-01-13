@@ -30,7 +30,7 @@ def fun1():
     #convert lists content to int
     for i in range(len(prices_orders)):
         prices_orders[i] = int(prices_orders[i])
-    for i in range(len(prices_days)):
+    for i in range(len(prices_days)):   
         prices_days[i] = int(prices_days[i])
     
     print("Type of prices_orders[0]:",type(prices_orders[0]),prices_orders[0])
@@ -40,7 +40,7 @@ def fun1():
         print(((i+1)*100),":",prices_orders[i])
     print("Array of sell prices")
     for i in range(sell_days):
-        print((i+1),prices_days[i])
+        print((i+1),":",prices_days[i])
 
     compute_matrix = []
 

@@ -11,7 +11,7 @@
 
 body 
 {
-    margin: 0;
+    margin: 20px;
     font-family: 'Roboto', sans-serif;
     background-color: var(--primary-color);
     color:var(--primaryFontColor);
@@ -30,12 +30,16 @@ table{
 
 #payment-table table, #regret-table table
 {
-    width: 400px;
+    width: 500px;
 }
 
 td {
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #CCCCCC;
-    font-size: 12px;
+    font-size: 15px;
+}
+
+.headers{
+    background-color: var(--secondary-color);
 }
