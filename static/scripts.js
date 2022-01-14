@@ -115,11 +115,11 @@ function appendCriterion(title, value, index){
     }
     else if(title == "Oczekiwana wypłata przy wykorzystaniu doskonałej informacji")
     {
-        p.innerHTML = "Według tego kryterium, oczekiwana wypłata przy wykorzystaniu doskonałej informacji wynosi: "+value;
+        p.innerHTML = "Oczekiwana wypłata przy wykorzystaniu doskonałej informacji wynosi: "+value;
     }
     else if(title == "Oczekiwana wartość doskonałej informacji")
     {
-        p.innerHTML = "Według tego kryterium, oczekiwana wartość doskonałej informacji wynosi: "+value;
+        p.innerHTML = "Oczekiwana wartość doskonałej informacji wynosi: "+value;
     }
     else
     {
